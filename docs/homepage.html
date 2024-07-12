@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jemimah Yawuli - Web Developer Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .hidden-section {
+      display: none;
+    }
+
+    .visible-section {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Home Section -->
+  <section id="home" class="visible-section">
+    <div class="container">
+      <div class="profile">
+        <img src="ProfilePic.jpeg" alt="Profile Picture" class="passport-photo">
+      </div>
+      <div class="intro">
+        <h1>Welcome to My Portfolio</h1>
+        <p>Hi, I'm Jemimah Yawuli, a passionate Web Developer specializing in HTML, CSS, React, and JavaScript.</p>
+        <a href="#about" id="learn-more">Learn More About Me</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me Section -->
+  <section id="about" class="hidden-section">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>My name is Jemimah Yawuli, and I'm a passionate Web Developer with a strong foundation in HTML, CSS, React, and JavaScript. I have developed PixieLink, a URL shortener app, and collaborated on projects like Tasky, a task planner app, Foodie, a food ordering web app and  Clawsome, an animal blog site dedicated to sharing stories and information about animals worldwide. Clawsome aims to educate and inspire people about wildlife conservation and animal welfare through engaging articles and interactive features.</p>
+      
+      <p>I'm eager to join a tech company where I can contribute to innovative projects and further develop my skills in modern web technologies.</p>
+      <p>Feel free to reach out to me on <a href="https://www.linkedin.com/in/jemimah-yawuli/">LinkedIn</a>.</p>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="hidden-section">
+    <div class="container">
+      <h2>Projects</h2>
+      
+      <div class="project">
+        <h3>PixieLink</h3>
+        <p>A URL shortener app that generates short links, QR codes, and provides link-in-bio features.</p>
+        <p><strong>Challenges:</strong> Implementing efficient URL shortening and managing a user-friendly interface.</p>
+        <p><strong>Process:</strong> Developed using React for the frontend and Node.js for the backend, with Axios for API calls.</p>
+        <a href="https://pixielink-7c9f1.web.app">View Project</a>
+      </div>
+      
+      <div class="project">
+        <h3>Tasky</h3>
+        <p>A task planner app developed to help users manage their tasks efficiently.</p>
+        <p><strong>Challenges:</strong> Ensuring a seamless user experience with drag-and-drop functionalities.</p>
+        <p><strong>Process:</strong> Collaborated with a team to design and implement the app using React and Redux.</p>
+        <a href="https://github.com/bhrayhaw/Task-Web-App---Group-1">View Project</a>
+      </div>
+      
+      <div class="project">
+        <h3>Foodie</h3>
+        <p>A food ordering web app that allows users to browse menus and place orders online.</p>
+        <p><strong>Challenges:</strong> Integrating real-time order tracking and payment processing.</p>
+        <p><strong>Process:</strong> Worked with a team to develop the app using React for the frontend and Firebase for the backend.</p>
+        <a href="https://github.com/generation-team1/tastytales">View Project</a>
+      </div>
+
+      <div class="project">
+        <h3>Clawsome</h3>
+        <p>An animal blog site dedicated to sharing stories and information about animals worldwide.</p>
+        <p><strong>Challenges:</strong> Curating engaging content and ensuring a responsive design for all devices.</p>
+        <p><strong>Process:</strong> Built using HTML, CSS, and JavaScript, with a focus on user-friendly navigation and interactive features.</p>
+        <a href="https://github.com/reuben-idan/Clawsome">View Project</a>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="hidden-section">
+    <div class="container">
+      <h2>Contact Me</h2>
+      <p>If you have any questions or would like to discuss a project, feel free to reach out to me via email or social media.</p>
+      <p>Email: <a href="mailto:jemimahyawuli10@gmail.com">jemimahyawuli10@gmail.com</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/jemimah-yawuli">https://www.linkedin.com/in/jemimah-yawuli</a></p>
+    </div>
+  </section>
+
+  <!-- JavaScript for Navigation -->
+  <script>
+    // JavaScript to toggle visibility of sections based on anchor links
+    document.addEventListener("DOMContentLoaded", function() {
+      const sections = document.querySelectorAll("section");
+      const navLinks = document.querySelectorAll("nav ul li a");
+
+      navLinks.forEach(function(navLink) {
+        navLink.addEventListener("click", function(event) {
+          event.preventDefault();
+          const targetId = navLink.getAttribute("href").substring(1);
+          sections.forEach(function(section) {
+            if (section.id === targetId) {
+              section.classList.add("visible-section");
+              section.classList.remove("hidden-section");
+            } else {
+              section.classList.add("hidden-section");
+              section.classList.remove("visible-section");
+            }
+          });
+        });
+      });
+
+      // Scroll to About Me section when "Learn More About Me" link is clicked
+      const learnMoreLink = document.getElementById('learn-more');
+      learnMoreLink.addEventListener('click', function(event) {
+        event.preventDefault();
+        const targetId = learnMoreLink.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        sections.forEach(function(section) {
+          if (section.id === targetId) {
+            section.classList.add("visible-section");
+            section.classList.remove("hidden-section");
+          } else {
+            section.classList.add("hidden-section");
+            section.classList.remove("visible-section");
+          }
+        });
+        window.scrollTo({
+          top: targetSection.offsetTop - 50, // Adjusted scroll offset for navbar height
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
